@@ -1,0 +1,16 @@
+{
+  "compatibility_date": "2025-04-01",
+  "main": "src/index.ts",
+  "name": "festa-mandria",
+  "upload_source_maps": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "9b0a0bfc-63bf-4c66-a198-89f9e338165d",
+      "database_name": "festa-mandriaDB"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
