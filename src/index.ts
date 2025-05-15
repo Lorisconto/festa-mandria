@@ -28,6 +28,7 @@ export default {
 
 if (request.method === 'POST') {
       const xmlText = await request.text();
+      console.log('XML arrivato:', xmlText);
       let data;
       try {
         data = parseReceiptXML(xmlText);
