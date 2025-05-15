@@ -1,14 +1,19 @@
-import { renderHtml } from "./renderHtml";
+import { parseReceiptXML } from './parser.js';
+import { saveToDB } from './db.js';
 
 export default {
   async fetch(request, env) {
-    const stmt = env.DB.prepare("SELECT * FROM comments LIMIT 3");
-    const { results } = await stmt.all();
-
-    return new Response(renderHtml(JSON.stringify(results, null, 2)), {
-      headers: {
-        "content-type": "text/html",
-      },
-    });
-  },
-} satisfies ExportedHandler<Env>;
+    if (request.method !== 'POST') {
+      return new Response('Use POST with XML payload', { status: 405 });
+    }
+    const xmlText = await request.text();
+    let data;
+    try {
+      data = parseReceiptXML(xmlText);
+    } catch (e) {
+      return new Response('Invalid XML format', { status: 400 });
+    }
+    await saveToDB(data, env.RECEIPTS_DB);
+    return new Response('OK', { status: 200 });
+  }
+};
