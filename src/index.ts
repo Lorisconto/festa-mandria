@@ -10,6 +10,7 @@ export default {
         p.nome,
         p.prezzo,
         SUM(sp.quantita) AS quantita_venduta,
+        p.quantita_iniziale AS quantita_iniziale,
         p.quantita_iniziale - SUM(sp.quantita) AS quantita_disponibile
       FROM 
         prodotti p
