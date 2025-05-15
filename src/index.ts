@@ -7,7 +7,7 @@ export default {
     if (request.method === 'GET') {
       // Un semplice join per mostrare tutto
       const { results } = await env.DB.prepare(`
-        SELECT * from prodotti
+        SELECT * from scontrini
       `).all();
 
       return new Response(renderHtml(JSON.stringify(results, null, 2)), {
