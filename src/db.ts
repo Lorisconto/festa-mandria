@@ -33,7 +33,7 @@ export async function saveToDB(
     await DB.prepare(`
       INSERT INTO scontrino_prodotti
         (scontrino_id, prodotto_id, quantita)
-      VALUES (?, ?, ?, ?, ?)
+      VALUES (?, ?, ?)
     `)
       .bind(
         id,

@@ -7,7 +7,7 @@ export default {
     if (request.method === 'GET') {
       // Un semplice join per mostrare tutto
       const { results } = await env.DB.prepare(`
-        SELECT * from scontrini
+        SELECT * from scontrino_prodotti
       `).all();
 
       return new Response(renderHtml(JSON.stringify(results, null, 2)), {
@@ -24,6 +24,9 @@ export default {
       } catch (err) {
         return new Response('Bad XML format', { status: 400 });
       }
+      
+      //stampa di data per debug
+      console.log('Parsed data:', JSON.stringify(data, null, 2));
       await saveToDB(data, env.DB);
       return new Response('OK', { status: 200 });
     }
