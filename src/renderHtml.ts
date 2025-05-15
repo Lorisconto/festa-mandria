@@ -79,7 +79,7 @@ export function renderHtml(data: any[]) {
       </head>
       <body>
         <header>
-        <img src="https://www.balliamoliscio.it/media/feste/santa-maria-assunta-campolongo.jpg" alt="Logo" style="height: 40px; border-radius: 6px;">
+        <img src="https://www.balliamoliscio.it/wp-content/uploads/2025/05/festa-patronale-san-eligio-mandria-di-chivasso-TO-2025-SPON.webp" alt="Logo" style="height: 40px; border-radius: 6px;">
           <h1>📑 Festa Mandria - Inventario prodotti</h1>
           <button class="reload-button" onclick="window.location.reload()">🔄 Ricarica</button>
         </header>
