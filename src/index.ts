@@ -1,11 +1,14 @@
 import { parseReceiptXML } from './parser.js';
 import { saveToDB } from './db.js';
+import {renderHtml} from './renderHtml.ts';
 
 export default {
+  renderHtml();
   async fetch(request, env) {
     if (request.method !== 'POST') {
       return new Response('Use POST with XML payload', { status: 405 });
     }
+    
     const xmlText = await request.text();
     let data;
     try {
