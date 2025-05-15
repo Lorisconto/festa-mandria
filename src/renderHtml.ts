@@ -12,7 +12,7 @@ export function renderHtml(content: string) {
       <body>
         <header>
           <img
-            src="https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/30e0d3f6-6076-40f8-7abb-8a7676f83c00/public"
+            src="logo.png"
           />
           <h1>🎉 FESTA caccca birra swag</h1>
         </header>
