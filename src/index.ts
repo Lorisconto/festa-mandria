@@ -7,7 +7,7 @@ export default {
     // Handle GET: render HTML
     if (request.method === 'GET') {
       // Query all receipts (or adjust query as needed)
-      const { results } = await env.DB.prepare('SELECT * FROM receipts').all();
+      const { results } = await env.DB.prepare('SELECT * FROM prodotti').all();
       const content = JSON.stringify(results, null, 2);
       const html = renderHtml(content);
       return new Response(html, {
