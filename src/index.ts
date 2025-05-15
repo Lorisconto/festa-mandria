@@ -6,18 +6,18 @@ export default {
   async fetch(request: Request, env: { DB: D1Database }) {
    if (request.method === 'GET') {
     const { results } = await env.DB.prepare(`
-      SELECT 
-        p.nome,
-        p.prezzo,
-        SUM(sp.quantita) AS quantita_venduta,
-        p.quantita_iniziale AS quantita_iniziale,
-        p.quantita_iniziale - SUM(sp.quantita) AS quantita_disponibile
-      FROM 
-        prodotti p
-      JOIN 
-        scontrino_prodotti sp ON p.id = sp.prodotto_id
-      GROUP BY 
-        p.id;
+       SELECT 
+          p.nome,
+          p.prezzo,
+          COALESCE(SUM(sp.quantita), 0) AS quantita_venduta,
+          p.quantita_iniziale AS quantita_iniziale,
+          p.quantita_iniziale - COALESCE(SUM(sp.quantita), 0) AS quantita_disponibile
+        FROM 
+          prodotti p
+        LEFT JOIN 
+          scontrino_prodotti sp ON p.id = sp.prodotto_id
+        GROUP BY 
+          p.id;
     `).all();
   
     return new Response(renderHtml(results), {
