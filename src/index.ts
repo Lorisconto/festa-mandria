@@ -1,22 +1,35 @@
-// src/index.ts
-import { parseReceiptXML } from './parser.js';
-import { saveToDB } from './db.js';
-import { renderHtml } from './renderHtml.ts';
+import { parseReceiptXML } from './parser';
+import { saveToDB } from './db';
+import { renderHtml } from './renderHtml';
 
 export default {
-  //async fetch(request, env) {
-   // if (request.method === 'POST') {
-      // … codice di ingest XML …
-    //  return new Response('OK', { status: 200 });
-   // }
-    // per le GET, restituisci la pagina HTML con i dati
-    // 1) Leggi qualche dato da D1 (es. SELECT * FROM …)
-    //const { results } = await env.RECEIPTS_DB.prepare('SELECT * FROM receipts').all();
-    //const content = JSON.stringify(results, null, 2);
-    const html = renderHtml("caio");
-    return new Response(html, {
-      status: 200,
-      headers: { 'Content-Type': 'text/html;charset=UTF-8' }
-    });
+  async fetch(request: Request, env: { RECEIPTS_DB: D1Database }) {
+    // Handle GET: render HTML
+    if (request.method === 'GET') {
+      // Query all receipts (or adjust query as needed)
+      const { results } = await env.RECEIPTS_DB.prepare('SELECT * FROM receipts').all();
+      const content = JSON.stringify(results, null, 2);
+      const html = renderHtml(content);
+      return new Response(html, {
+        status: 200,
+        headers: { 'Content-Type': 'text/html; charset=UTF-8' }
+      });
+    }
+
+    // Handle POST: ingest XML
+    if (request.method === 'POST') {
+      const xmlText = await request.text();
+      let data;
+      try {
+        data = parseReceiptXML(xmlText);
+      } catch (err) {
+        return new Response('Bad XML format', { status: 400 });
+      }
+      await saveToDB(data, env.RECEIPTS_DB);
+      return new Response('OK', { status: 200 });
+    }
+
+    // Method not allowed
+    return new Response('Method Not Allowed', { status: 405 });
   }
 };
