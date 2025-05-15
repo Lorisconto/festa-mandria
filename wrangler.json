@@ -5,7 +5,7 @@
   "upload_source_maps": true,
   "d1_databases": [
     {
-      "binding": "RECEIPTS_DB",
+      "binding": "DB",
       "database_id": "9b0a0bfc-63bf-4c66-a198-89f9e338165d",
       "database_name": "festa-mandriaDB"
     }
