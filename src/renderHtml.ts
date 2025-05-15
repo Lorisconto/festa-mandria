@@ -2,7 +2,6 @@ export function renderHtml(data: any[]) {
   const rows = data.map(row => `
     <tr>
       <td>${row.nome}</td>
-      <td>${row.prezzo.toFixed(2)} €</td>
       <td>${row.quantita_venduta}</td>
       <td>${row.quantita_iniziale}</td>
       <td>${row.quantita_disponibile}</td>
@@ -88,7 +87,6 @@ export function renderHtml(data: any[]) {
             <thead>
               <tr>
                 <th>Nome</th>
-                <th>Prezzo</th>
                 <th>Quantità venduta</th>
                 <th>Quantità iniziale</th>
                 <th>Disponibile</th>
