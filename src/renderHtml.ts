@@ -4,6 +4,7 @@ export function renderHtml(data: any[]) {
       <td>${row.nome}</td>
       <td>${row.prezzo.toFixed(2)} €</td>
       <td>${row.quantita_venduta}</td>
+      <td>${row.quantita_iniziale}</td>
       <td>${row.quantita_disponibile}</td>
     </tr>
   `).join('');
