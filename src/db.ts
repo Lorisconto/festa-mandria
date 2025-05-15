@@ -32,15 +32,13 @@ export async function saveToDB(
 
     await DB.prepare(`
       INSERT INTO scontrino_prodotti
-        (scontrino_id, prodotto_id, quantita, prezzo_unitario, importo_totale)
+        (scontrino_id, prodotto_id, quantita)
       VALUES (?, ?, ?, ?, ?)
     `)
       .bind(
         id,
         prodottoId,
-        r.qty,
-        r.unitPrice,
-        r.lineTotal
+        r.qty
       )
       .run();
   }
