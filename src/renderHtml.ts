@@ -18,6 +18,26 @@ export function renderHtml(data: any[]) {
         <title>Festa di paese – Scontrini</title>
         <link rel="stylesheet" href="https://static.integrations.cloudflare.com/styles.css">
         <style>
+                  header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+          }
+
+          .reload-button {
+            background-color: #0070f3;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+          }
+
+          .reload-button:hover {
+            background-color: #005dc1;
+          }
           table {
             width: 100%;
             border-collapse: collapse;
@@ -37,6 +57,7 @@ export function renderHtml(data: any[]) {
         <header>
           <img src="logo.png">
           <h1>📑 Elenco Prodotti Venduti</h1>
+          <button class="reload-button" onclick="window.location.reload()">🔄 Ricarica</button>
         </header>
         <main>
           <table>
