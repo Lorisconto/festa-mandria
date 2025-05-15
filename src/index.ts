@@ -13,7 +13,7 @@ export default {
     // 1) Leggi qualche dato da D1 (es. SELECT * FROM …)
     //const { results } = await env.RECEIPTS_DB.prepare('SELECT * FROM receipts').all();
     //const content = JSON.stringify(results, null, 2);
-    const html = renderHtml(content);
+    const html = renderHtml("caio");
     return new Response(html, {
       status: 200,
       headers: { 'Content-Type': 'text/html;charset=UTF-8' }
