@@ -4,17 +4,27 @@ import { renderHtml } from './renderHtml';
 
 export default {
   async fetch(request: Request, env: { DB: D1Database }) {
-    if (request.method === 'GET') {
-      // Un semplice join per mostrare tutto
-      const { results } = await env.DB.prepare(`
-        SELECT * from scontrino_prodotti
-      `).all();
+   if (request.method === 'GET') {
+    const { results } = await env.DB.prepare(`
+      SELECT 
+        p.nome,
+        p.prezzo,
+        SUM(sp.quantita) AS quantita_venduta,
+        p.quantita_iniziale - SUM(sp.quantita) AS quantita_disponibile
+      FROM 
+        prodotti p
+      JOIN 
+        scontrini_prodotti sp ON p.id = sp.prodotto_id
+      GROUP BY 
+        p.id;
+    `).all();
+  
+    return new Response(renderHtml(results), {
+      status: 200,
+      headers: { 'Content-Type': 'text/html; charset=UTF-8' }
+    });
+  }
 
-      return new Response(renderHtml(JSON.stringify(results, null, 2)), {
-        status: 200,
-        headers: { 'Content-Type': 'text/html; charset=UTF-8' }
-      });
-    }
 
     if (request.method === 'POST') {
       const xmlText = await request.text();
