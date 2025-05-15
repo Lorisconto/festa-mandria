@@ -7,13 +7,7 @@ export default {
     if (request.method === 'GET') {
       // Un semplice join per mostrare tutto
       const { results } = await env.DB.prepare(`
-        SELECT s.id, s.data_ora, sp.prodotto_id, sp.quantita,
-               sp.prezzo_unitario, sp.importo_totale
-        FROM scontrini s
-        LEFT JOIN scontrino_prodotti sp
-          ON s.id = sp.scontrino_id
-        ORDER BY s.data_ora DESC
-        LIMIT 100
+        SELECT * from prodotti
       `).all();
 
       return new Response(renderHtml(JSON.stringify(results, null, 2)), {
