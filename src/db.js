@@ -1,6 +1,6 @@
-async function saveToDB({ id, dateTime, total, lines }, RECEIPTS_DB) {
+async function saveToDB({ id, dateTime, total, lines }, DB) {
   // Inserimento scontrino
-  await RECEIPTS_DB.prepare(`
+  await DB.prepare(`
     INSERT INTO receipts (id, date_time, total_amount)
     VALUES (?, ?, ?)
   `)
@@ -9,7 +9,7 @@ async function saveToDB({ id, dateTime, total, lines }, RECEIPTS_DB) {
 
   // Inserimento righe
   for (const l of lines) {
-    await RECEIPTS_DB.prepare(`
+    await DB.prepare(`
       INSERT INTO receipt_lines
         (receipt_id, product_code, description, quantity, unit_price, line_total)
       VALUES (?, ?, ?, ?, ?, ?)
