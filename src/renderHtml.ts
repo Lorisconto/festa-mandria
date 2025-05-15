@@ -11,7 +11,8 @@ export function renderHtml(content: string) {
       </head>
       <body>
         <header>
-        <img src="logo.png">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Logo_OpenAI.svg/512px-Logo_OpenAI.svg.png" alt="Test logo" width="150">
+
           <h1>📑 Elenco Scontrini</h1>
         </header>
         <main>
