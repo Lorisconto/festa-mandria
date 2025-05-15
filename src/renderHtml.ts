@@ -12,7 +12,7 @@ export function renderHtml(content: string) {
       <body>
         <header>
        
-          <img src="src/logo.png">
+          <img src="logo.png">
           <h1>📑 Elenco Scontrini</h1>
         </header>
         <main>
