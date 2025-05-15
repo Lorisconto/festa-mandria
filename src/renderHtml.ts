@@ -17,41 +17,66 @@ export function renderHtml(data: any[]) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Festa di paese – Scontrini</title>
         <link rel="stylesheet" href="https://static.integrations.cloudflare.com/styles.css">
-        <style>
-                  header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem;
-          }
+<style>
+  * {
+    box-sizing: border-box;
+  }
 
-          .reload-button {
-            background-color: #0070f3;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-          }
+  body {
+    margin: 0;
+    font-family: sans-serif;
+  }
 
-          .reload-button:hover {
-            background-color: #005dc1;
-          }
-          table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-          }
-          th, td {
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            text-align: left;
-          }
-          th {
-            background-color: #f2f2f2;
-          }
-        </style>
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #fafafa;
+    border-bottom: 1px solid #ddd;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .reload-button {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .reload-button:hover {
+    background-color: #005dc1;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+
+  th, td {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
       </head>
       <body>
         <header>
