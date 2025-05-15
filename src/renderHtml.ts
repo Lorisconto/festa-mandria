@@ -11,8 +11,8 @@ export function renderHtml(content: string) {
       </head>
       <body>
         <header>
-       <img src="logo.png">
-
+       
+          <img src="logo.png">
           <h1>📑 Elenco Scontrini</h1>
         </header>
         <main>
