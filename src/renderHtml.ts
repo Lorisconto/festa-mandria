@@ -55,8 +55,7 @@ export function renderHtml(data: any[]) {
       </head>
       <body>
         <header>
-          <img src="logo.png">
-          <h1>📑 Elenco Prodotti Venduti</h1>
+          <h1>📑 Festa Mandira - Inventario prodotti</h1>
           <button class="reload-button" onclick="window.location.reload()">🔄 Ricarica</button>
         </header>
         <main>
