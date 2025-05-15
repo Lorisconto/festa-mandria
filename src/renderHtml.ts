@@ -79,7 +79,7 @@ export function renderHtml(data: any[]) {
       </head>
       <body>
         <header>
-          <h1>📑 Festa Mandira - Inventario prodotti</h1>
+          <h1>📑 Festa Mandria - Inventario prodotti</h1>
           <button class="reload-button" onclick="window.location.reload()">🔄 Ricarica</button>
         </header>
         <main>
@@ -96,7 +96,7 @@ export function renderHtml(data: any[]) {
               ${rows}
             </tbody>
           </table>
-                    <img src="./logo.png" alt="Logo Festa Mandira" width="48" height="48" />
+                    <img src="logo.png" alt="Logo Festa Mandria" width="48" height="48" />
         </main>
       </body>
     </html>
