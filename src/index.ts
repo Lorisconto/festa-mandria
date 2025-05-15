@@ -27,26 +27,21 @@ export default {
   }
 
 if (request.method === 'POST') {
-  const xmlText = await request.text();
-  let data;
-  try {
-    data = parseReceiptXML(xmlText);
-  } catch (err) {
-    return new Response('Bad XML format', { status: 400 });
-  }
-
-  // Salva normalmente
-  await saveToDB(data, env.DB);
-
-  // 🔥 Qui restituisco il debug nel body
-  return new Response(
-    JSON.stringify(data, null, 2),
-    {
-      status: 200,
-      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+      const xmlText = await request.text();
+      let data;
+      try {
+        data = parseReceiptXML(xmlText);
+      } catch (err) {
+        return new Response('Bad XML format', { status: 400 });
+      }
+      
+      //stampa di data per debug
+      console.log('Parsed data:', JSON.stringify(data, null, 2));
+      await saveToDB(data, env.DB);
+      return new Response('OK', { status: 200 });
     }
-  );
-}
-}
-}
+
+    return new Response('Method Not Allowed', { status: 405 });
+  }
+};
     
