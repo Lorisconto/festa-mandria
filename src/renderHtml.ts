@@ -45,6 +45,7 @@ export function renderHtml(data: any[]) {
                 <th>Nome</th>
                 <th>Prezzo</th>
                 <th>Quantità venduta</th>
+                <th>Quantità iniziale</th>
                 <th>Disponibile</th>
               </tr>
             </thead>
