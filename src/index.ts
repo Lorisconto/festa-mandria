@@ -3,11 +3,11 @@ import { saveToDB } from './db';
 import { renderHtml } from './renderHtml';
 
 export default {
-  async fetch(request: Request, env: { RECEIPTS_DB: D1Database }) {
+  async fetch(request: Request, env: { DB: D1Database }) {
     // Handle GET: render HTML
     if (request.method === 'GET') {
       // Query all receipts (or adjust query as needed)
-      const { results } = await env.RECEIPTS_DB.prepare('SELECT * FROM receipts').all();
+      const { results } = await env.DB.prepare('SELECT * FROM receipts').all();
       const content = JSON.stringify(results, null, 2);
       const html = renderHtml(content);
       return new Response(html, {
@@ -25,7 +25,7 @@ export default {
       } catch (err) {
         return new Response('Bad XML format', { status: 400 });
       }
-      await saveToDB(data, env.RECEIPTS_DB);
+      await saveToDB(data, env.DB);
       return new Response('OK', { status: 200 });
     }
 
