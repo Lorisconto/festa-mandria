@@ -47,4 +47,6 @@ if (request.method === 'POST') {
     }
   );
 }
+}
+}
     
