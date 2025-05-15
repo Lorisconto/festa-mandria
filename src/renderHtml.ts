@@ -97,7 +97,6 @@ export function renderHtml(data: any[]) {
               ${rows}
             </tbody>
           </table>
-                    <img src="logo.png" alt="Logo Festa Mandria" width="48" height="48" />
         </main>
       </body>
     </html>
