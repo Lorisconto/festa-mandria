@@ -1,29 +1,20 @@
 export function renderHtml(content: string) {
   return `
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="it">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>D1</title>
-        <link rel="stylesheet" type="text/css" href="https://static.integrations.cloudflare.com/styles.css">
+        <title>Festa di paese – Scontrini</title>
+        <link rel="stylesheet" href="https://static.integrations.cloudflare.com/styles.css">
       </head>
-    
       <body>
         <header>
-          <img
-            src="logo.png"
-          />
-          <h1>🎉 FESTA caccca birra swag</h1>
+          <h1>📑 Elenco Scontrini</h1>
         </header>
         <main>
-          <p>Your D1 Database contains the following data:</p>
-          <pre><code><span style="color: #0E838F">&gt; </span>SELECT * FROM comments LIMIT 3;<br>${content}</code></pre>
-          <small class="blue">
-            <a target="_blank" href="https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/">Build a comments API with Workers and D1</a>
-          </small>
+          <pre><code>${content}</code></pre>
         </main>
       </body>
-    </html>
-`;
+    </html>`;
 }
