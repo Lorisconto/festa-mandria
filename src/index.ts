@@ -14,7 +14,7 @@ export default {
       FROM 
         prodotti p
       JOIN 
-        scontrini_prodotti sp ON p.id = sp.prodotto_id
+        scontrino_prodotti sp ON p.id = sp.prodotto_id
       GROUP BY 
         p.id;
     `).all();
